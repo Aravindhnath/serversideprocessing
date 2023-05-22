@@ -122,6 +122,7 @@ urlpatterns = [
 
 ### Calculations:
 ![Output](/Output/Output_lab5.png)
+![Output](/Output/Output_lab5(2).png)
 
 ## Result:
 The program for implementing server side processing is completed successfully.
