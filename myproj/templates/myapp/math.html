@@ -2,7 +2,7 @@
 <head>
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<title>Area of Rectangle</title>   
+<title>Area of Triangle</title>   
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <style>
 body {
@@ -39,14 +39,14 @@ padding-top: 20px;
 <body>
 <div class="edge">
 <div class="box">
-<h1>Area of a Rectangle</h1> 
+<h1>Area of a Triangle</h1> 
 <form method="POST">
 {% csrf_token %}
 <div class="formelt">
-Length : <input type="text" name="length" value="{{l}}"></input>(in m)<br/>
+Height : <input type="text" name="height" value="{{h}}"></input>(in m)<br/>
 </div>
 <div class="formelt">
-Breadth : <input type="text" name="breadth" value="{{b}}"></input>(in m)<br/>    
+Base : <input type="text" name="base" value="{{b}}"></input>(in m)<br/>    
 </div>    
 <div class="formelt">
 <input type="submit" value="Calculate"></input><br/>    

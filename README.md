@@ -14,7 +14,7 @@ Make the necessary changes in the settings.py and add codes in urls.py and views
 ### Step 4:
 Under templates and myfirstapp, create a html file named math.html and write the required html code for the website.
 ### Step 5:
-Then makemigrations and run the server to get the output.
+Push to the github.
 ### Step 6:
 Publish the website in the given URL.
 
@@ -25,7 +25,7 @@ math.html
 <head>
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<title>Area of Rectangle</title>   
+<title>Area of Triangle</title>   
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <style>
 body {
@@ -62,14 +62,14 @@ padding-top: 20px;
 <body>
 <div class="edge">
 <div class="box">
-<h1>Area of a Rectangle</h1> 
+<h1>Area of a Triangle</h1> 
 <form method="POST">
 {% csrf_token %}
 <div class="formelt">
-Length : <input type="text" name="length" value="{{l}}"></input>(in m)<br/>
+Height : <input type="text" name="height" value="{{h}}"></input>(in m)<br/>
 </div>
 <div class="formelt">
-Breadth : <input type="text" name="breadth" value="{{b}}"></input>(in m)<br/>    
+Base : <input type="text" name="base" value="{{b}}"></input>(in m)<br/>    
 </div>    
 <div class="formelt">
 <input type="submit" value="Calculate"></input><br/>    
@@ -85,27 +85,26 @@ Area : <input type="text" name="area" value="{{area}}"></input>m<sup>2</sup><br/
 ```
 views.py
 ```python
-
 from django.shortcuts import render
-def rectarea(request):
+def trianglearea(request):
     context={}
     context['area'] = "0"
-    context['l'] = "0"
+    context['h'] = "0"
     context['b'] = "0"
     if request.method == 'POST':
         print("POST method is used")
-        l = request.POST.get('length','0')
-        b = request.POST.get('breadth','0')
+        h = request.POST.get('height','0')
+        b = request.POST.get('base','0')
         print('request=',request)
-        print('length=',l)
-        print('breadth=',b)
-        area = int(l) * int(b)
+        print('height=',h)
+        print('base=',b)
+        area = int(h) * int(b)/2
         context['area'] = area
-        context['l'] = l
+        context['h'] = h
         context['b'] = b
         print('Area=',area)
-    return render(request,'myapp/math.html',context)
-```    
+    return render(request,'myapp/math.html',context)   
+```
 urls.py
 ```python
 from django.contrib import admin
@@ -113,18 +112,16 @@ from django.urls import path
 from myapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('areaofrectangle/',views.rectarea,name="areaofrectangle"),
-    path('',views.rectarea,name="areaofrectangleroot")
-]
+    path('areaoftriangle/',views.trianglearea,name="areaoftriangle"),
+    path('',views.trianglearea,name="areaoftriangleroot")
 ```
-
 ## OUTPUT:
 
 ### Home Page:
-![Output](/Output/Output_Homepage_lab05.png)
+![Output](/Output/Output_lab5homepage.png)
 
 ### Calculations:
-![Output](/Output/Output_lab05.png)
+![Output](/Output/Output_lab5.png)
 
 ## Result:
 The program for implementing server side processing is completed successfully.
